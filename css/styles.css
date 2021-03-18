@@ -8,6 +8,7 @@
   --colorOn-darkВackground: #ffffff;
   --indent: 94px;
   --margin-bottom-title: 50px;
+  --transition-color: color 1250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .link {
@@ -85,9 +86,9 @@ img {
 /* ============== END LOGO ============== */
 
 /* ============== HEADER ============== */
-/* .header{
-    outline: 1px solid red;
-} */
+.header{
+  border-bottom: 1px solid #ECECEC;
+}
 
 .header .container {
   display: flex;
@@ -120,17 +121,30 @@ img {
 .contact-list-svg {
   fill: var(--text-color);
   margin-right: 10px;
+  transition: fill 850ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* outline: 1px solid red; */
-
-/* .contact-list-svg:hover{
-  fill: var(--accent-color);
-} */
 
 .navigation-list {
   display: flex;
   align-items: center;
 }
+.navigation-item::after{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navigation-item:hover:after{
+  opacity: 1;
+}
+
+
 .navigation-link {
   display: block;
   padding-top: 32px;
@@ -141,6 +155,8 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--title-color);
+
+  transition: var(--transition-color);
 }
 
 .navigation-list .link.current {
@@ -161,6 +177,7 @@ img {
   line-height: 1.14;
   letter-spacing: 0.02em;
   color: var(--text-color);
+  transition: var(--transition-color);
 }
 
 .contact-link:hover,
@@ -172,6 +189,8 @@ img {
 .contact-link:focus .contact-list-svg {
   fill: var(--accent-color);
 }
+
+
 /* ============== END HEADER ============== */
 
 /* ============== HERO ============== */
@@ -225,33 +244,6 @@ img {
 .advantage-item {
   flex-basis: calc((100% - 90px) / 4);
 }
-/* .advantage-item::before {
-  content: "";
-  display: block;
-  height: 120px;
-  margin-bottom: 30px;
-  background-color: #f5f4fa;
-  background-size: auto;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 4px;
-}
-
-.icon-antena::before {
-  background-image: url(../images/advantage/advantage-antenna.svg);
-}
-
-.icon-clock::before {
-  background-image: url(../images/advantage/advantage-clock.svg);
-}
-
-.icon-diagram::before {
-  background-image: url(../images/advantage/advantage-diagram.svg);
-}
-
-.icon-astronaut::before {
-  background-image: url(../images/advantage/advantage-astronaut.svg);
-} */
 
 .advantage-container-svg {
   width: 100%;
@@ -291,9 +283,15 @@ img {
 /* .whatWeDo{
 outline: 1px solid red;    
 } */
+
 .whatWeDo .container {
   padding-bottom: var(--indent);
 }
+
+.whatWeDo-item{
+  position: relative;
+}
+
 .whatWeDo-img {
   max-width: 100%;
   height: auto;
@@ -309,6 +307,27 @@ outline: 1px solid red;
 
 .whatWeDo-list :not(:last-child) {
   margin-right: 30px;
+}
+
+.boxCaption {
+  background-color: rgba(47, 48, 58, 0.8);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.whatWeDo-cardCaption {
+  padding-top: 27px;
+  padding-bottom: 27px;
+  font-family: var(--main-font);
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
 }
 
 /* ============== END WHAT WE DO ============== */
@@ -335,10 +354,6 @@ outline: 1px solid red;
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 0px 0px 4px 4px;
 }
-/* 
-.ourTeam-link-position{
-    padding-bottom: 30px;
-} */
 
 .ourTeam-list .ourTeam-link + .ourTeam-link {
   margin-left: 30px;
@@ -384,6 +399,8 @@ outline: 1px solid red;
   align-items: center;
   height: 100%;
   width: 100%;
+  border-radius: 50%;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .social-list .social-item + .social-item {
   margin-left: 10px;
@@ -394,12 +411,12 @@ outline: 1px solid red;
   height: 20px;
   margin: auto;
   fill: var(--social-link-color);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);;
 }
 
 .social-link:hover,
 .social-link:focus {
   background-color: var(--accent-color);
-  border-radius: 50%;
 }
 
 .social-link:hover .social-svg,
@@ -431,10 +448,12 @@ outline: 1px solid red;
   height: 100%;
   border: 1px solid var(--social-link-color);
   border-radius: 4px;
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);;
 }
 
 .clients-logo-svg {
   fill: var(--social-link-color);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-logo-item:hover .clients-logo-svg,
@@ -527,14 +546,14 @@ outline: 1px solid red;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   cursor: pointer;
-  border-color: var(--accent-color);
+  border-color: transparent;
   padding: 10px 32px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-button:hover,
 .modal-button:focus {
   background-color: #188ce8;
-  border-color: #188ce8;
 }
 
 .section-title {
@@ -581,6 +600,9 @@ outline: 1px solid red;
   border: #f5f4fa;
   cursor: pointer;
   padding: 6px 22px;
+  transition: var(--transition-color), 
+  background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .ourWorks-list .list + .list {
@@ -605,6 +627,7 @@ outline: 1px solid red;
   flex-basis: calc((100% - 60px) / 3);
   margin-top: 30px;
   margin-left: 30px;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .ourWorks-card:hover {
@@ -642,7 +665,6 @@ outline: 1px solid red;
 
   transform: translateY(100%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  
 
   font-family: var(--main-font);
   font-size: 18px;
@@ -653,7 +675,7 @@ outline: 1px solid red;
 }
 
 .ourWork:hover .overlay,
-.ourWork:focus .overlay{
+.ourWork:focus .overlay {
   transform: translateY(0%);
 }
 
@@ -677,5 +699,3 @@ outline: 1px solid red;
   letter-spacing: 0.03em;
   color: var(--text-color);
 }
-
-
