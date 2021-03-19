@@ -113,7 +113,7 @@ img {
 .contact-list-svg {
   fill: var(--text-color);
   margin-right: 10px;
-  transition: fill 850ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* outline: 1px solid red; */
 
@@ -154,6 +154,7 @@ img {
 .navigation-list .link.current {
   color: var(--accent-color);
 }
+
 
 .navigation-link:hover,
 .navigation-link:focus,
